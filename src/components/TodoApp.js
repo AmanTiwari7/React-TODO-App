@@ -1,20 +1,8 @@
-const TodoApp = () => {
-  const tabelStyle = {
-    width: '100%',
-    borderCollapse: 'collapse',
-    border: '1px solid #ddd'
-  };
+import "./TodoApp.css";
 
-  const thStyle = {
-    backgroundColor: '#f4f4f4',
-    border: '1px solid #ddd',
-    padding: '12px',
-    textAlign: 'left',
-    fontWeight: 'bold'
-  };
-  
+const TodoApp = () => {
   return (
-    <div>
+    <div class="container">
       <div>
         <h1>Todo List</h1>
         <hr />
@@ -25,19 +13,32 @@ const TodoApp = () => {
         <hr />
       </div>
       <div>
-        <table style={tabelStyle}>
+        <table>
           <thead>
             <tr>
-              <th style={thStyle}>Task Name</th>
-              <th style={thStyle}>Task Details</th>
-              <th style={thStyle}>Task Date</th>
-              <th style={thStyle}>Info</th>
-              <th style={thStyle}>Edit</th>
-              <th style={thStyle}>Delete</th>
+              <th className="table-header">Task Name</th>
+              <th className="table-header">Task Details</th>
+              <th className="table-header">Task Date</th>
+              <th className="table-header">Info</th>
+              <th className="table-header">Edit</th>
+              <th className="table-header">Delete</th>
             </tr>
           </thead>
           <tbody>
-            
+            <tr>
+              <td className="table-cell">Complete React Project</td>
+              <td className="table-cell">
+                Build a todo app with add, edit, and delete features
+              </td>
+              <td className="table-cell">2025-10-01</td>
+              <td className="table-cell">High Priority</td>
+              <td className="table-cell">
+                <button className="btn-edit">Edit</button>
+              </td>
+              <td className="table-cell">
+                <button className="btn-delete">Delete</button>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
