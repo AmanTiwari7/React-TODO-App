@@ -10,6 +10,7 @@ const TodoApp = () => {
   const [info, setInfo] = useState()
   
   const addTask = () => {
+    console.log("Invoking the addTask button...")
     const newTask = {
       id: Date.now(),
       taskName: taskName,
@@ -17,8 +18,8 @@ const TodoApp = () => {
       taskDate: taskDate,
       info: info
     }
+    console.log("New dataTask is:", newTask)
     setTasks([...tasks, newTask])
-
     setTaskName('')
     setTaskDate('')
     setTaskDetails('')
@@ -26,8 +27,8 @@ const TodoApp = () => {
   }
 
   const handleDelete = (id) => {
-    console.log("Calling the delete function for:", id)
-    return
+    console.log("Calling the delete function for:", id,"With Tasks as:", tasks)
+    setTasks(tasks.filter(item => item.id !== id))
   }
   const handleEdit = (id) => {
     console.log("Calling the Edit function for:", id)
@@ -35,13 +36,13 @@ const TodoApp = () => {
   }
 
   return (
-    <div class="container">
+    <div className="container">
       <div>
         <h1>Todo List</h1>
         <hr />
       </div>
       <div>
-        <input placeholder="Enter a Task" value={taskName} onChange={(e) => { setTaskName(e.target.name) }}></input>
+        <input placeholder="Enter a Task" value={taskName} onChange={(e) => { setTaskName(e.target.value) }}></input>
         <button onClick={() => { addTask() }}>Add</button>
         <hr />
       </div>
@@ -75,10 +76,10 @@ const TodoApp = () => {
                   <td className="table-cell">2025-10-01</td>
                   <td className="table-cell">High Priority</td>
                   <td className="table-cell">
-                    <button className="btn-edit" onClick={() => handleEdit(tasks.id)}> ✏️ </button>
+                    <button className="btn-edit" onClick={() => handleEdit(task.id)}> ✏️ </button>
                   </td>
                   <td className="table-cell">
-                    <button className="btn-delete" onClick={() => handleDelete(tasks.id)}> 🗑️ </button>
+                    <button className="btn-delete" onClick={() => handleDelete(task.id)}> 🗑️ </button>
                   </td>
                 </tr>
               ))
