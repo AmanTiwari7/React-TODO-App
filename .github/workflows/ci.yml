@@ -1,0 +1,29 @@
+name: React CI Pipeline
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install frontend dependencies
+        run: npm install
+
+      # Build React without treating warnings as errors
+      - name: Build frontend
+        run: CI=false npm run build
+
+      # Run tests without treating warnings as errors
+      - name: Run frontend tests
+        run: CI=false npm test -- --watchAll=false
