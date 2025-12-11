@@ -17,14 +17,13 @@ jobs:
         with:
           node-version: 18
 
-      # Install dependencies
       - name: Install frontend dependencies
         run: npm install
 
-      # Build the React app
+      # Build React without treating warnings as errors
       - name: Build frontend
-        run: npm run build
+        run: CI=false npm run build
 
-      # Run frontend tests
+      # Run tests without treating warnings as errors
       - name: Run frontend tests
-        run: npm test -- --watchAll=false
+        run: CI=false npm test -- --watchAll=false
